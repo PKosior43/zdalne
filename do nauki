@@ -1,0 +1,124 @@
+GIT
+
+GIT to najpopularniejszy system kontroli wersji. Jego najważniejszymi cechami są: decentralizacja, prosta obsługa i szybkość działania.
+
+GIT umożliwia dostęp do historii zapisanych zmian w plikach projktu. W każdej chwili możemy podejrzeć lub przywrócić dowolną zmianę.
+
+Jedną z najważniejszych funkcji GIT jest branch (gałęzie). Umożliwiają rozwój nowych fukcji aplikacji niezależnych od siebie
+
+
+                              LOKALNE REPOZYTORIUM
+                              
+KATALOG ROBOCZY                   PRZECHOWALNIA                     REPOZYTORIUM
+(working directory)               (stage area)                      (.git folder)
+
+git add .  ----------------------> git commit ---------------------> git checkout
+
+
+GIT INIT - zainicjowanie repozytorium
+
+GIT STATUS - wyświetla stan naszego repozytorium
+
+plik .gitignore - lista pomijanych plików
+
+GIT ADD (nazwa pliku) - dodaje pliki do przechowani
+
+GIT COMMIT - zapisuje dane z przechowalni do repozytorium (flaga -m dodaje komentarz)
+
+GIT CLEAN - polecenie służące do usuwania nieśledzonych plików i katalogów
+            (flaga -n wyswietla liste plików które zostaną usunięte)
+            (flaga -nd wyświetla liste plików i katalogów które zostaną usunięte)
+            (flaga -idf [i - tryb interaktywny][d - pliki i katalogi][f - usuwanie])
+
+GIT RESET - odwrotnośc polecenia git add
+
+GIT CHECKOUT --"nazwa pliku" - usuwa zmiany w pliku który znajdował się w repozytorium ale wprowadziliśmy jakieś zmiany.
+
+GIT RM - usuwa pliki z repozytroium -> GIT CHECKOUT "nazwa pliku" - przywraca plik z indeksu GIT
+
+GIT LOG - wyśietla historie plików
+(--oneline - skrócona historia)
+(--author ="nazwa" - wyświtla historie podanego autora)
+(--grep ="aaa" - wyszukuje po podanej frazie)
+(-3 - wyświetla 3 najnowsze commity)
+(--patch - wyświetla dokładną informacje i zmianach w pliku)
+
+
+
+GIT CHECKOUT - to operacja polegająca na przesunięciu wskaźnika HEAD na wskazan commit. w praktyce w katalogu roboczym zostaną wczytane pliki w wersji z wybranego commitu
+
+GIT REVERT - to operacja polegająca na odwróceniu zmian z wybranego commit i zapisaniu ich jako nowy commit. Polecenie może być uruchamione wyłącznie na poziomie commitu. Z pomocą git revert możemy bezpiecznie przywracać zmiany które znajdują się już w repozytorium publicznym.
+
+GIT RESET - Przywraca zmiany w repozytorium do wskazanego punktu z historii zmian. Przywrócenie zmian oznacza modyfikajce historii commitów. Z tego powodu nie zaleca się stosowania tego polecenia w przypadku commitów wysłanych do zdalnego repozytorium.
+
+***********
+-- mixed - oznacza że wszystkie wprowadzone zmiany do momentu w którym się cofamy zostaną zapisane w katalogu roboczym.
+
+-- soft - podobnie jak mixed ale zmiany zostaną dodane na stage i będziemy mogli łatwo je dodać do nstępnego commitu.
+
+-- hard - zmiany zostaną całkowicie usunięte.
+************
+
+
+GIT SHORTLOG - wyświetla historie zmian z podziałem na użytkowników
+
+GIT STASH - przenosi pliki w których aktualnie pracujemy na stos. Umożliwia np. zmiane użytkownika lub commitu.
+
+GIT STASH POP - przywraca zmiany ze stosu do aktulnego użytkownika lub commitu.(POP usuwa ze stosu)(APPLY zostawia na stosie)
+
+GIT STASH LIST - lista zmian będących na stosie.
+
+GIT STASH DROP "nazwa" - usuwa plik ze stosu.
+
+GIT STASH CLEAR - czyści cały stos.
+
+GIT BRANCH DEVELOP - tworzy nowy branch develop
+
+GIT BRANCH - wyświetla liste dostępnych branchy.
+
+GIT CHECKOUT DEVELOP - przełącza branch na develop
+
+GIT MERGE "1" - łączy branch na którym aktualnie się znajdujemy z branchem "1"
+
+GIT LOG --GRAPH --DECORATE --ALL --ONELINE - wyświetla liste z następującymi flagami
+
+GIT BRANCH -D DEVELOP - usuwa branch develop
+********************
+
+MASTE BRANCH - główna gałąź repozytorium wykorzystywana do publikacji najnowszej wersji projektu na serwerze produkcyjnym.
+               (master zawsze powinien zawierać stabilną wersje projektu)
+
+DEVELOP BRANCH - gałąź na której znajduje się testowa wersja projektu, zwykle połącznona z serwerem testowym.
+
+FEATURE BRANCH - gałąź na której prowadzone są prace nad nowymi funcjami. Po ukończeniu prac , zmiany trafiają na branch dev.
+
+USER BRANCH - gałęzie uzytkowników służą indywidualnej pracy członka zespołu nad zmianami. Ukończone trafiają na branch feature.
+
+TEST/BUGFIX BRANCH - w szczególnych przypadkach, konieczne jest szybkie wprowadzenie zmian. W tej sytuacji wykorzystywane są branche typu bugfix. Przygotowane tutaj zmiany najczęściej trafiają bezpośednio na branch dev.
+
+GIT PUSH - wysyła zmiany z lokalnego repozytorium na repozytorium zdalne.
+
+GIT FETCH - pobiera zmiany ze zdalnego repozytorium na repozytorium lokalne.
+
+GIT MERGE ORIGIN/MASTER - uaktualnia lokalne repozytorium
+
+
+
+
+FORK - kopia zdalnego repozytorium do którego wysyłami zmiany. Zmiany muszą być zaakceptowane.
+
+
+
+GIT BRANCH -f MAIN HEAD~3
+GIT REBASE (nazwa gałęzi)
+GIT CHERRY-PICK<commit1><commit2>
+GIT REBASE -i <commit>
+GIT COMMIT --aamend
+
+GIT DESCRIBE - polecenie opisujące, gdzie jesteśmy w stosunku do najbliższej kotwicy
+
+GIT BISECT
+GIT FAKETEAMWORK
+GIT PULL --rebase
+GIT CHECKOUT -u (nazwa gałęzi)(nazwa śledzona)
+
