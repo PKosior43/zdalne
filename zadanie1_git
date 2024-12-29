@@ -1,0 +1,21 @@
+git branch develop
+git checkout develop
+nano do_nauki
+git status
+git add .
+git commit
+git checkout main
+nano do_nauki
+git add .
+git commit
+git merge develop (konflikt)
+nano do_nauki (rozwiązanie konfliktu poprzez edycje zaznaczonych elementów)
+git add .
+git commit
+git merge develop
+git push git@github.com:PKosior43/zdalne.git
+
+
+
+
+git@github.com:PKosior43/zdalne.git - link do repozytorium
